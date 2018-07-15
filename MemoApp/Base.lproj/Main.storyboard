@@ -1,24 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tWC-fE-B08">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tab View Controller-->
+        <scene sceneID="gj5-wh-FOa">
+            <objects>
+                <tabBarController id="tWC-fE-B08" customClass="TabViewController" customModule="MemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oAa-SG-qNe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="cWd-7E-ygk"/>
+                        <segue destination="NoO-9n-6lu" kind="relationship" relationship="viewControllers" id="NTU-tn-MuP"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yv6-0P-a76" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-479" y="82"/>
+        </scene>
+        <!--plans-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstVC" id="BYZ-38-t0r" customClass="ViewController" customModule="MemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygE-Y9-f22">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Plans" id="0W4-hC-Hef">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vyY-4M-qZu">
+                                            <connections>
+                                                <action selector="dateButtonTapped:" destination="BYZ-38-t0r" id="YUI-Bc-jjB"/>
+                                                <segue destination="SfP-ko-RUm" kind="show" id="9Bk-IL-odB"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iuO-Wi-6U1">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iuO-Wi-6U1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9gB-RC-Q9c"/>
+                            <constraint firstItem="ygE-Y9-f22" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DIA-K3-gYY"/>
+                            <constraint firstItem="iuO-Wi-6U1" firstAttribute="top" secondItem="ygE-Y9-f22" secondAttribute="bottom" id="JUu-9U-LEz"/>
+                            <constraint firstItem="ygE-Y9-f22" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RGx-Et-Pht"/>
+                            <constraint firstItem="ygE-Y9-f22" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="qIV-TP-lQH"/>
+                            <constraint firstItem="iuO-Wi-6U1" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qSz-0A-U2W"/>
+                            <constraint firstItem="iuO-Wi-6U1" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="rPn-Pi-uR2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="plans" id="H4f-xD-xl9"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="ygE-Y9-f22" id="ate-BM-GnG"/>
+                        <outlet property="textView" destination="iuO-Wi-6U1" id="F0j-qB-fNX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="260" y="-179"/>
+        </scene>
+        <!--View Controller3-->
+        <scene sceneID="KBM-9n-cHN">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="SfP-ko-RUm" customClass="ViewController3" customModule="MemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DPd-GG-zDN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zY-Yt-Lcb">
+                                <rect key="frame" x="0.0" y="372" width="375" height="295"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="AJe-wO-Ubt">
+                                        <rect key="frame" x="8" y="147" width="359" height="140"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="140" id="RLv-Nd-7Xy"/>
+                                        </constraints>
+                                        <date key="date" timeIntervalSinceReferenceDate="553181676.31375301">
+                                            <!--2018-07-13 13:34:36 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5T-4u-ryq">
+                                        <rect key="frame" x="-1" y="103" width="376" height="44"/>
+                                        <items>
+                                            <barButtonItem title="Done" id="yQA-4f-2ni">
+                                                <connections>
+                                                    <segue destination="GFU-cL-kpv" kind="unwind" unwindAction="backToTopWithSegue:" id="zJ2-eR-ERp"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Back" id="SqA-RK-N6c">
+                                                <connections>
+                                                    <segue destination="GFU-cL-kpv" kind="unwind" unwindAction="backWithSegue:" id="Dcp-yn-hUP"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="AJe-wO-Ubt" firstAttribute="bottom" secondItem="3zY-Yt-Lcb" secondAttribute="bottomMargin" id="9rt-lt-0YU"/>
+                                    <constraint firstAttribute="trailing" secondItem="F5T-4u-ryq" secondAttribute="trailing" id="OPW-bh-V7f"/>
+                                    <constraint firstItem="AJe-wO-Ubt" firstAttribute="leading" secondItem="3zY-Yt-Lcb" secondAttribute="leadingMargin" id="hmf-al-LJ8"/>
+                                    <constraint firstItem="AJe-wO-Ubt" firstAttribute="centerX" secondItem="F5T-4u-ryq" secondAttribute="centerX" id="kZ4-BG-X3Q"/>
+                                    <constraint firstItem="AJe-wO-Ubt" firstAttribute="trailing" secondItem="3zY-Yt-Lcb" secondAttribute="trailingMargin" id="oVk-0X-tQ7"/>
+                                    <constraint firstItem="AJe-wO-Ubt" firstAttribute="top" secondItem="F5T-4u-ryq" secondAttribute="bottom" id="yb6-6J-vZg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3zY-Yt-Lcb" firstAttribute="leading" secondItem="DPd-GG-zDN" secondAttribute="leading" id="65B-GO-bMt"/>
+                            <constraint firstAttribute="trailing" secondItem="3zY-Yt-Lcb" secondAttribute="trailing" id="E6g-fs-57P"/>
+                            <constraint firstItem="3zY-Yt-Lcb" firstAttribute="top" secondItem="lde-XK-xaw" secondAttribute="top" constant="352" id="PSB-T3-qNf"/>
+                            <constraint firstItem="3zY-Yt-Lcb" firstAttribute="bottom" secondItem="lde-XK-xaw" secondAttribute="bottom" id="nXH-Bl-Uy4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lde-XK-xaw"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="SqA-RK-N6c" id="qKM-JY-dUc"/>
+                        <outlet property="datePicker" destination="AJe-wO-Ubt" id="RQf-g3-KG5"/>
+                        <outlet property="doneButton" destination="yQA-4f-2ni" id="1zZ-Cm-g8Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wVw-8R-eA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GFU-cL-kpv" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="933.60000000000002" y="-179.46026986506749"/>
+        </scene>
+        <!--Data Source-->
+        <scene sceneID="Aim-mU-T6o">
+            <objects>
+                <viewController storyboardIdentifier="SecondVC" id="NoO-9n-6lu" customClass="ViewController2" customModule="MemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fja-9Z-Ous">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgR-DE-Jma" customClass="FSCalendar">
+                                <rect key="frame" x="29" y="48" width="316" height="512"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="NoO-9n-6lu" id="Pli-cB-cNB"/>
+                                    <outlet property="delegate" destination="NoO-9n-6lu" id="7yY-Lr-Y9Y"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IZa-mH-WSq" firstAttribute="bottom" secondItem="bgR-DE-Jma" secondAttribute="bottom" constant="58" id="0Jn-kc-tnb"/>
+                            <constraint firstItem="bgR-DE-Jma" firstAttribute="top" secondItem="IZa-mH-WSq" secondAttribute="top" constant="28" id="E3U-LF-2J4"/>
+                            <constraint firstItem="bgR-DE-Jma" firstAttribute="leading" secondItem="IZa-mH-WSq" secondAttribute="leading" constant="29" id="FhO-W9-W4n"/>
+                            <constraint firstItem="bgR-DE-Jma" firstAttribute="centerX" secondItem="fja-9Z-Ous" secondAttribute="centerX" id="aVo-PD-FsF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IZa-mH-WSq"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="calendar" id="dZC-JB-Bbv"/>
+                    <connections>
+                        <outlet property="calendar" destination="bgR-DE-Jma" id="3q5-Fu-aCW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DBO-CL-UwW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="260" y="483.50824587706148"/>
         </scene>
     </scenes>
 </document>

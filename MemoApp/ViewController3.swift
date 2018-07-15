@@ -10,10 +10,20 @@ import UIKit
 
 class ViewController3: UIViewController {
 
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        datePicker.datePickerMode = UIDatePickerMode.date
+        doneButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Light", size: 17)!], for :UIControlState.normal)
+        backButton.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Light", size: 17)!], for :UIControlState.normal)
+        
     }
 
     override func didReceiveMemoryWarning() {
