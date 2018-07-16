@@ -60,6 +60,12 @@ class ViewController: UIViewController {
             name: NSNotification.Name.UITextViewTextDidChange,
             object: nil
         )
+
+        
+        //テキストビューのスクロール範囲設定(文字キーボード下隠れる対策)
+        textView.isScrollEnabled = true
+        textView.contentInset = UIEdgeInsetsMake(0, 0, (textView.contentSize.height), 0)
+        
         //テキストビューのフォントを変更する
         textView.font = UIFont(name: "HelveticaNeue-Light", size: 16)
         //ナビゲーションバーを透明にする
@@ -122,7 +128,7 @@ class ViewController: UIViewController {
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
-    
+        textView.contentInset = UIEdgeInsetsMake(0, 0, (textView.contentSize.height), 0)
     }
     
     
@@ -146,7 +152,7 @@ class ViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat  = "yyyy/MM/dd";
         compareDates : if matches.count == 0{
-            insertedText.append(formatter.string(from: date1!))
+            insertedText.append("\n" + formatter.string(from: date1!) + "\n")
         }else{
             for matched in matches {
                 let date2 : Date = formatter.date(from : matched)!
@@ -154,12 +160,12 @@ class ViewController: UIViewController {
                     //マッチする文字列の場所を特定
                     let loc = searchedText.range(of: matched).location
                     //日付挿入
-                    insertedText.insert("\n" + formatter.string(from: date1!) + "\n\n", at: loc)
+                    insertedText.insert(formatter.string(from: date1!) + "\n\n\n", at: loc)
                     break compareDates
                 }
             }
             //選択した日付が最新である場合は、テキストの最後に追加する
-            insertedText.append("\n\n\n" + formatter.string(from: date1!) + "\n\n")
+            insertedText.append("\n" + formatter.string(from: date1!) + "\n")
         }
         //テキストビューに日付挿入ごのテキストを設定
         textView.text = insertedText as String!
@@ -182,6 +188,8 @@ class ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.textView.resignFirstResponder()
     }
+    
+
 
 }
 
