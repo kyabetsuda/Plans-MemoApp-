@@ -60,11 +60,10 @@ class ViewController: UIViewController {
             name: NSNotification.Name.UITextViewTextDidChange,
             object: nil
         )
-
         
         //テキストビューのスクロール範囲設定(文字キーボード下隠れる対策)
         textView.isScrollEnabled = true
-        textView.contentInset = UIEdgeInsetsMake(0, 0, (textView.contentSize.height), 0)
+        textView.contentInset = UIEdgeInsetsMake(0, 0, (textView.contentSize.height/2), 0)
         
         //テキストビューのフォントを変更する
         textView.font = UIFont(name: "HelveticaNeue-Light", size: 16)
@@ -90,11 +89,9 @@ class ViewController: UIViewController {
             scroll(to: loc)
             appDelegate.flg = false
         }
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        textView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+        //テキストビューのスクロール範囲設定(文字キーボード下隠れる対策)
+//        textView.isScrollEnabled = true
+//        textView.contentInset = UIEdgeInsetsMake(0, 0, (textView.contentSize.height), 0)
     }
     
     override func didReceiveMemoryWarning() {
@@ -128,7 +125,10 @@ class ViewController: UIViewController {
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
-        textView.contentInset = UIEdgeInsetsMake(0, 0, (textView.contentSize.height), 0)
+
+        //テキストビューのスクロール範囲設定(文字キーボード下隠れる対策)
+        textView.isScrollEnabled = true
+        textView.contentInset = UIEdgeInsetsMake(0, 0, (textView.contentSize.height/2), 0)
     }
     
     
@@ -188,8 +188,6 @@ class ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.textView.resignFirstResponder()
     }
-    
-
 
 }
 
